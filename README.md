@@ -1,2 +1,5 @@
-# Sindhu
-My first repository in semester 1
+#include <stdio.h>
+int main()
+{
+printf("Hello world");
+}
