@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct student
+{
+	int id;
+	char name[20];
+	int fees;
+};
+
+void display(struct student a)
+{
+	printf("student id = %d\n",a.id);
+	printf("student name=%s\n",a.name);
+	printf("student fees=%d\n",a.fees);
+}
+
+int main()
+{
+	struct student a[100];
+	int n,ch,searchID,i;
+
+	printf("enter number of students\n");
+	scanf("%d",&n);
+
+	for( i=0; i<n; ++i)
+	{
+		printf("enter the details of students %d\n",i+1);
+		printf("enter id:\n");
+		scanf("%d",&a[i].id);
+		printf("enter name:\n");
+		scanf("%s",a[i].name);
+		printf("enter fees:\n");
+		scanf("%d",&a[i].fees);
+
+	}
+	do {
+		printf("====student management system====\n");
+		printf("1.access all the student details\n");
+		printf("2.search student details with id\n");
+		printf("3.exit\n");
+
+		printf("enter your choice\n");
+		scanf("%d",&ch);
+
+		switch(ch)
+		{
+		case 1 :
+			printf("all student details\n");
+			for(i=0; i<n; ++i) {
+				display(a[i]);
+			}
+			break;
+
+		case 2:
+		    int found=0;
+			printf("search the student by id\n");
+			printf("enter search id\n");
+			scanf("%d",&searchID);
+			for(i=0; i<n; ++i)
+			{
+				if(searchID==a[i].id)
+				{
+					found=1;
+					display(a[i]);
+					break;
+				}
+			}
+			if(found<1)
+				{
+					printf("student not found\n");
+
+				}
+			
+			break;
+
+		case 3:
+			printf("code exited");
+			exit(0);
+
+		default:
+			printf("invalid choice\n");
+			break;
+		}
+
+
+	} while(1);
+
+	return 0;
+}
